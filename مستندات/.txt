@@ -1,2 +1,4 @@
 
 npm install react-icons react-hook-form clsx
+
+yarn add @tailwindcss/forms
