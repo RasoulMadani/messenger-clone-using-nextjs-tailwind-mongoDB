@@ -5,11 +5,12 @@ import { useCallback, useState } from "react";
 import Input from "@/app/components/inputs/Input";
 import Button from "@/app/components/Button";
 import AuthSocialButton from "./AuthSocialButton";
-import {BsGithub,BsGoogle} from 'react-icons/bs';
+import { BsGithub, BsGoogle } from "react-icons/bs";
 type Variant = "LOGIN" | "REGISTER";
 function AuthForm() {
   const [variant, setVariant] = useState<Variant>("LOGIN");
   const [isLoading, setIsLoading] = useState(false);
+  // ! TODO useCallback برای چیه؟
   const toggleVariant = useCallback(() => {
     if (variant === "LOGIN") {
       setVariant("REGISTER");
@@ -64,6 +65,7 @@ function AuthForm() {
             type="email"
             register={register}
             errors={errors}
+            disabled={isLoading}
           />
           <Input
             id="password"
@@ -71,6 +73,7 @@ function AuthForm() {
             type="password"
             register={register}
             errors={errors}
+            disabled={isLoading}
           />
           <div>
             <Button disabled={isLoading} fullWidth type="submit">
@@ -97,8 +100,28 @@ function AuthForm() {
             </div>
           </div>
           <div className="mt-6 flex gap-2">
-            <AuthSocialButton icon={BsGithub} onClick={()=>socialAction('github')}/>
-            <AuthSocialButton icon={BsGoogle} onClick={()=>socialAction('google')}/>
+            <AuthSocialButton
+              icon={BsGithub}
+              onClick={() => socialAction("github")}
+            />
+            <AuthSocialButton
+              icon={BsGoogle}
+              onClick={() => socialAction("google")}
+            />
+          </div>
+        </div>
+        <div
+          className="flex gap-2 justify-center text-sm
+        mt-6
+        px-2
+        text-gray-500"
+        >
+          <div>
+            {variant === 'LOGIN' ? 'New to Messenger ?' : 'Already have an account ?'}
+          </div>
+          <div onClick={toggleVariant}
+          className="underline cursor-pointer">
+            {variant === 'LOGIN' ? 'Create an account': "Login"}
           </div>
         </div>
       </div>
