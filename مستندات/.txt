@@ -2,3 +2,8 @@
 npm install react-icons react-hook-form clsx
 
 yarn add @tailwindcss/forms
+
+yarn add -D prisma
+npx prisma init
+بعد از نوشتن مدل با این دستور پوش می کنیم
+npx prisma db push
