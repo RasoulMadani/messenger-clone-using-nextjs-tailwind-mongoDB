@@ -8,7 +8,7 @@ import AuthSocialButton from "./AuthSocialButton";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 import axios from "@/node_modules/axios";
 import { toast } from "@/node_modules/react-hot-toast";
-import {signIn} from 'next-auth/react';
+import { signIn } from "next-auth/react";
 type Variant = "LOGIN" | "REGISTER";
 function AuthForm() {
   const [variant, setVariant] = useState<Variant>("LOGIN");
@@ -35,28 +35,31 @@ function AuthForm() {
     },
   });
 
-  const onSubmit: SubmitHandler<FieldValues> = (data:any) => {
+  const onSubmit: SubmitHandler<FieldValues> = (data: any) => {
     setIsLoading(true);
 
     if (variant === "REGISTER") {
       // Axios Register
-      axios.post('/api/register',data)
-      .catch(()=> toast.error('Something went wrong!'))
-      .finally(()=>setIsLoading(false));
+      axios
+        .post("/api/register", data)
+        .catch(() => toast.error("Something went wrong!"))
+        .finally(() => setIsLoading(false));
     }
     if (variant === "LOGIN") {
       // NextAuth SignIn
-      signIn('credentials',{
+      signIn("credentials", {
         ...data,
-        redirect:false
-      }).then((callback:any)=>{
-        if(callback?.error){
-          toast.error('Invalid credentials');
-        }
-        if(callback?.ok && !callback?.error){
-          toast.success('Logged in!');
-        }
-      }).finally(()=>setIsLoading(false)); //https://youtu.be/PGPGcKBpAk8?t=6413
+        redirect: false,
+      })
+        .then((callback: any) => {
+          if (callback?.error) {
+            toast.error("Invalid credentials");
+          }
+          if (callback?.ok && !callback?.error) {
+            toast.success("Logged in!");
+          }
+        })
+        .finally(() => setIsLoading(false)); //https://youtu.be/PGPGcKBpAk8?t=6413
     }
   };
 
@@ -64,6 +67,17 @@ function AuthForm() {
     setIsLoading(true);
 
     // NextAuth Social Sign In
+    //TODO روی گیت کار نمی کند
+    signIn(action, { redirect: false })
+      .then((callback: any) => {
+        if (callback?.error) {
+          toast.error("Invalid Credentials");
+        }
+        if (callback?.ok && !callback?.error) {
+          toast.success("Logged in!");
+        }
+      })
+      .finally(() => setIsLoading(false));
   };
   return (
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -134,11 +148,12 @@ function AuthForm() {
         text-gray-500"
         >
           <div>
-            {variant === 'LOGIN' ? 'New to Messenger ?' : 'Already have an account ?'}
+            {variant === "LOGIN"
+              ? "New to Messenger ?"
+              : "Already have an account ?"}
           </div>
-          <div onClick={toggleVariant}
-          className="underline cursor-pointer">
-            {variant === 'LOGIN' ? 'Create an account': "Login"}
+          <div onClick={toggleVariant} className="underline cursor-pointer">
+            {variant === "LOGIN" ? "Create an account" : "Login"}
           </div>
         </div>
       </div>
