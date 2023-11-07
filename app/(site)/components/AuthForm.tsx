@@ -10,7 +10,7 @@ type Variant = "LOGIN" | "REGISTER";
 function AuthForm() {
   const [variant, setVariant] = useState<Variant>("LOGIN");
   const [isLoading, setIsLoading] = useState(false);
-  // ! TODO useCallback برای چیه؟
+  //TODO   useCallback برای چیه؟
   const toggleVariant = useCallback(() => {
     if (variant === "LOGIN") {
       setVariant("REGISTER");
@@ -22,7 +22,7 @@ function AuthForm() {
   const {
     register,
     handleSubmit,
-    //! TODO این چیه
+    //TODO این چیه
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {

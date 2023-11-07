@@ -68,7 +68,7 @@ model Message {
   body      String?
   image     String?
   createdAt DateTime @default(now())
-  //! TODO اینها چیه 
+  //TODO اینها چیه 
   seenIds String[] @db.ObjectId
   seen    User[]   @relation("Seen", fields: [seenIds], references: [id])
 
