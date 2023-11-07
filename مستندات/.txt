@@ -11,3 +11,6 @@ npx prisma db push
 
 yarn add next-auth@latest @prisma/client @next-auth/prisma-adapter bcrypt
 yarn add -D @types/bcrypt
+
+
+yarn add axios
