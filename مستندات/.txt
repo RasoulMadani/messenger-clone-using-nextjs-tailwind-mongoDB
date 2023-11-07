@@ -14,3 +14,5 @@ yarn add -D @types/bcrypt
 
 
 yarn add axios
+
+yarn add react-hot-toast

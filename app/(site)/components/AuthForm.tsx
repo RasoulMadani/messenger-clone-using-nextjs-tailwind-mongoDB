@@ -7,6 +7,7 @@ import Button from "@/app/components/Button";
 import AuthSocialButton from "./AuthSocialButton";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 import axios from "@/node_modules/axios";
+import { toast } from "@/node_modules/react-hot-toast";
 type Variant = "LOGIN" | "REGISTER";
 function AuthForm() {
   const [variant, setVariant] = useState<Variant>("LOGIN");
@@ -38,7 +39,7 @@ function AuthForm() {
 
     if (variant === "REGISTER") {
       // Axios Register
-      axios.post('/api/register',data);
+      axios.post('/api/register',data).catch(()=> toast.error('Something went wrong!'));
     }
     if (variant === "LOGIN") {
       // NextAuth SignIn
