@@ -13,14 +13,14 @@ import { useRouter } from "@/node_modules/next/navigation";
 type Variant = "LOGIN" | "REGISTER";
 function AuthForm() {
   const session = useSession();
-  const router = useRouter()
+  const router = useRouter();
   const [variant, setVariant] = useState<Variant>("LOGIN");
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     if (session?.status === "authenticated") {
-      router.push('/users');
+      router.push("/users");
     }
-  }, [session?.status,router]);
+  }, [session?.status, router]);
   //TODO   useCallback برای چیه؟
   const toggleVariant = useCallback(() => {
     if (variant === "LOGIN") {
@@ -29,6 +29,13 @@ function AuthForm() {
       setVariant("LOGIN");
     }
   }, [variant]);
+
+  // type LoginFormType = {
+  //   name: string;
+  //   email: string;
+  //   password: string;
+  //   isActive: boolean;
+  // };
 
   const {
     register,
@@ -50,7 +57,7 @@ function AuthForm() {
       // Axios Register
       axios
         .post("/api/register", data)
-        .then(()=>signIn('credentials',data))
+        .then(() => signIn("credentials", data))
         .catch(() => toast.error("Something went wrong!"))
         .finally(() => setIsLoading(false));
     }
@@ -66,7 +73,7 @@ function AuthForm() {
           }
           if (callback?.ok && !callback?.error) {
             toast.success("Logged in!");
-            router.push('/users');
+            router.push("/users");
           }
         })
         .finally(() => setIsLoading(false)); //https://youtu.be/PGPGcKBpAk8?t=6413
@@ -100,6 +107,9 @@ function AuthForm() {
           {variant === "REGISTER" && (
             <Input id="name" label="Name" register={register} errors={errors} />
           )}
+          {/* <input type={"text"} {...register("email" , {
+            required: true
+          })} /> */}
           <Input
             id="email"
             label="Email address"
