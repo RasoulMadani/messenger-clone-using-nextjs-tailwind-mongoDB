@@ -1,4 +1,17 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  experimental: {
+    //TODO چیه وچیکار می کنه ؟
+    swcPlugins: [["next-superjson-plugin", {}]],
+  },
+  images: {
+    // این قسمت برای رفع خطای بارگیری عکس ها وقتی با گوگل وارد می شویم به کار می رود
+    domains: [
+      "res.cloudinary.com",
+      "avatars.githubusercontent.com",
+      "lh3.googleusercontent.com",
+    ],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
