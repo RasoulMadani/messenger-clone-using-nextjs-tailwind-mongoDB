@@ -20,3 +20,5 @@ yarn add react-hot-toast
 yarn add react-icons
 
 yarn add next-superjson-plugin
+
+pnpm add date-fns
