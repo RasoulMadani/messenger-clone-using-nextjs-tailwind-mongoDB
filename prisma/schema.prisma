@@ -69,11 +69,11 @@ model Message {
   image     String?
   createdAt DateTime @default(now())
   //TODO اینها چیه 
-  seenIds String[] @db.ObjectId
-  seen    User[]   @relation("Seen", fields: [seenIds], references: [id])
+  seenIds   String[] @db.ObjectId
+  seen      User[]   @relation("Seen", fields: [seenIds], references: [id])
 
   conversationId String       @db.ObjectId
   conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
-  senderId       String       @db.ObjectId 
+  senderId       String       @db.ObjectId
   sender         User         @relation(fields: [senderId], references: [id], onDelete: Cascade)
 }
