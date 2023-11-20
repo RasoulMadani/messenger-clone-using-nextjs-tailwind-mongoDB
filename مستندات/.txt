@@ -24,3 +24,5 @@ yarn add next-superjson-plugin
 pnpm add date-fns
 
 pnpm add next-cloudinary
+
+pnpm add @headlessui/react
