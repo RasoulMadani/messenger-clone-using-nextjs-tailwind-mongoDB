@@ -26,3 +26,6 @@ pnpm add date-fns
 pnpm add next-cloudinary
 
 pnpm add @headlessui/react
+
+
+pnpm add react-select
