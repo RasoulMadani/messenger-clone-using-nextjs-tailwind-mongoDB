@@ -31,3 +31,5 @@ pnpm add @headlessui/react
 pnpm add react-select
 
 pnpm add react-spinners
+
+pnpm add pusher pusher-js
