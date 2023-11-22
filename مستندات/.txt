@@ -33,3 +33,7 @@ pnpm add react-select
 pnpm add react-spinners
 
 pnpm add pusher pusher-js
+
+pnpm add lodash
+
+pnpm add -D @types/lodash
