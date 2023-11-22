@@ -29,3 +29,5 @@ pnpm add @headlessui/react
 
 
 pnpm add react-select
+
+pnpm add react-spinners
