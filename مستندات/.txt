@@ -37,3 +37,5 @@ pnpm add pusher pusher-js
 pnpm add lodash
 
 pnpm add -D @types/lodash
+
+pnpm add zustand
